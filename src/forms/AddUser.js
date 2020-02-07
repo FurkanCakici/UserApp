@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import posed from 'react-pose';
 import UserConsumer from '../context';
+import Axios from 'axios';
 
-var uniqid = require('uniqid');
 
 const Animation = posed.div({
    visible: {
@@ -23,7 +23,8 @@ class AddUser extends Component {
       isVisible: false,
       name: '',
       department: '',
-      salary: ''
+      salary: '',
+      error: false
    };
 
    changeVisibility = e => {
@@ -39,24 +40,43 @@ class AddUser extends Component {
       })
    }
 
-   addUser = (dispatch, e) => {
+   validateForm = () => {
+      const { name, salary, department } = this.state;
+      if (name === "" || salary === "" || department === "") {
+         return false;
+      }
+      return true;
+   }
+
+   addUser = async (dispatch, e) => {
       e.preventDefault();
       const { name, department, salary } = this.state;
 
       const newUser = {
-         id: uniqid(),
          name,
          department,
          salary
       }
 
-      dispatch({ type: "ADD_USER", payload: newUser })
+      if (!this.validateForm()) {
+         this.setState({
+            error: true
+         })
+         return;
+      }
+
+      const response = await Axios.post("http://localhost:3002/users", newUser)
+      dispatch({ type: "ADD_USER", payload: response.data })
+
+      this.props.history.push("/"); // return index
    }
 
 
 
+
+
    render() {
-      const { isVisible, name, department, salary } = this.state;
+      const { isVisible, name, department, salary, error } = this.state;
 
       return <UserConsumer>
          {value => {
@@ -72,7 +92,14 @@ class AddUser extends Component {
                         <div className="card-header">
                            <h4>Add User From</h4>
                         </div>
+
                         <div className="card-body">
+                           {
+                              error ?
+                                 <div className="alert alert-danger">
+                                    Lütfen bilgilerinizi kontrol ediniz..
+                              </div> : null
+                           }
                            <form onSubmit={this.addUser.bind(this, dispatch)}>
                               <div className="form-group">
                                  <label htmlFor="name">Name</label>

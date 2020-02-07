@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserConsumer from '../context';
+import Axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 export class User extends Component {
    constructor(props) {
@@ -17,14 +20,18 @@ export class User extends Component {
       });
    };
 
-   onDeleteUser = (dispatch, e) => {
+   onDeleteUser = async (dispatch, e) => {
       const { id } = this.props;
+      // Delete Request
+      await Axios.delete(`http://localhost:3002/users/${id}`)
       // Consumer Dispatch
       dispatch({ type: 'DELETE_USER', payload: id });
    };
 
+
+
    render() {
-      const { name, department, salary } = this.props;
+      const { id, name, department, salary } = this.props;
       const { isVisible } = this.state;
       return (
          <UserConsumer>
@@ -33,24 +40,26 @@ export class User extends Component {
                return (
                   <div>
                      <div className="col-sm-6 offset-sm-3 mb-4">
-                        <div className="card" style={isVisible ? { backgroundColor: '#c23616', color: 'white' } : null}>
+                        <div className={isVisible ? "card bg-danger text-light" : "card bg-success text-light"}>
                            <div className="card-header d-flex justify-content-between" style={{ cursor: 'pointer' }}>
                               <h4 className="d-inline" onClick={this.clickHandler}> {name} </h4>
-                              <i className="far fa-trash-alt" style={{ cursor: 'pointer' }} onClick={this.onDeleteUser.bind(this, dispatch)}></i>
+                              <i className="far fa-trash-alt fa-2x" style={{ cursor: 'pointer' }} onClick={this.onDeleteUser.bind(this, dispatch)}></i>
                            </div>
 
                            {isVisible ? (
                               <div className="card-body">
                                  <p className="card-text">Maaş : {salary}</p>
                                  <p className="card-text"> Departman : {department} </p>
+                                 <Link to={`/Update/${id}`} className="btn btn-info btn-block">Update User</Link>
                               </div>
                            ) : null}
                         </div>
                      </div>
                   </div>
                );
-            }}
-         </UserConsumer>
+            }
+            }
+         </UserConsumer >
       );
    }
 }

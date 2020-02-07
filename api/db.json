@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "name": "Furkan Çakıcı",
+      "salary": "5900",
+      "department": "Bilişim",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Fehmi Keten",
+      "salary": "2500",
+      "department": "Satış"
+    },
+    {
+      "name": "Ahmet Yücel",
+      "salary": "4500",
+      "department": "Üretim",
+      "id": "3"
+    },
+    {
+      "name": "Poyral Yüksel",
+      "salary": "3800",
+      "department": "Satış",
+      "id": "BYMqgFM"
+    },
+    {
+      "name": "Ahmet Çelebi",
+      "salary": "3200",
+      "department": "Depo",
+      "id": "dR-irOa"
+    }
+  ]
+}
