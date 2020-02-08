@@ -65,7 +65,7 @@ export class User extends Component {
 }
 
 User.propTypes = {
-   /* isRequired Kullanımı */
+   /*  isRequired Kullanımı */
    name: PropTypes.string.isRequired,
    department: PropTypes.string.isRequired,
    salary: PropTypes.string.isRequired,
