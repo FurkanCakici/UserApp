@@ -1,4 +1,4 @@
-## Basit bir kullanıcı ekleme-silme uygulamasıdır
+## REACTJS İLE YAPILMIŞ BİR CRUD UYGULAMASIDIR
 
 * [ContextAPI] - state manegment olarak kullanılmıştır 
 - Json serverda ayağı kaldırılmıştır.
