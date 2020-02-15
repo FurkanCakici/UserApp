@@ -28,7 +28,26 @@ const reducer = (state, action) => {
 };
 export class UserProvider extends Component {
    state = {
-      users: [],
+      users: [
+         {
+            id: "uniq-1",
+            name: "Furkan Çakıcı",
+            salary: "5000",
+            department: "Bilişim"
+         },
+         {
+            id: "uniq-2",
+            name: "Cemal Yıldırım",
+            salary: "4000",
+            department: "Pazarlama"
+         },
+         {
+            id: "uniq-3",
+            name: "Alperen Şen",
+            salary: "3500",
+            department: "Depo"
+         }
+      ],
       dispatch: action => {
          this.setState(state => reducer(state, action));
       }

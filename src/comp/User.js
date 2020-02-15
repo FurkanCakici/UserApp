@@ -40,7 +40,7 @@ export class User extends Component {
                return (
                   <div>
                      <div className="col-sm-6 offset-sm-3 mb-4">
-                        <div className={isVisible ? "card bg-danger text-light" : "card bg-success text-light"}>
+                        <div className={isVisible ? "card bg-success text-light" : "card bg-success text-light"}>
                            <div className="card-header d-flex justify-content-between" style={{ cursor: 'pointer' }}>
                               <h4 className="d-inline" onClick={this.clickHandler}> {name} </h4>
                               <i className="far fa-trash-alt fa-2x" style={{ cursor: 'pointer' }} onClick={this.onDeleteUser.bind(this, dispatch)}></i>
@@ -50,7 +50,7 @@ export class User extends Component {
                               <div className="card-body">
                                  <p className="card-text">Maaş : {salary}</p>
                                  <p className="card-text"> Departman : {department} </p>
-                                 <Link to={`/Update/${id}`} className="btn btn-info btn-block">Update User</Link>
+                                 <Link to={`/Update/${id}`} className="btn btn-primary btn-block">Update User</Link>
                               </div>
                            ) : null}
                         </div>
