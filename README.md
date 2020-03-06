@@ -4,7 +4,6 @@
 - Json serverda ayağı kaldırılmıştır.
 
 
-http://g.recordit.co/aWWpGqVrQ0.gif
-## ![Link](http://g.recordit.co/aWWpGqVrQ0.gif)
+## ![Link](http://g.recordit.co/EVYaaM1opi.gif)
 
-http://g.recordit.co/EVYaaM1opi.gif
+
